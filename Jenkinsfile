@@ -2,6 +2,19 @@ pipeline {
     agent any
 
     stages {
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+
+        stage('Checkout Code') {
+            steps {
+                echo '📥 Cloning GitHub repository...'
+                sh 'git clone https://github.com/Syedmujtaba2002/python-cicd-demo.git .'
+            }
+        }
+
         stage('Build') {
             steps {
                 echo '🔧 Creating virtual environment and installing dependencies...'
